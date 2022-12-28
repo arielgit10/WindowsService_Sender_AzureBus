@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-WorkerService_Sender-46FB0278-624E-43CB-AC0D-13BAF12A7D1A</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.11.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="6.0.2-mauipre.1.22102.15" />
+  </ItemGroup>
+</Project>
