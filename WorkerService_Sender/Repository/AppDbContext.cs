@@ -12,9 +12,7 @@ namespace WorkerService_Sender.Repository
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
         }
-
         public virtual DbSet<Account> Accounts { get; set; } = null!;
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>(account =>
@@ -26,8 +24,6 @@ namespace WorkerService_Sender.Repository
                 account.Property(a => a.Balance);
 
             });
-
-
         }
     }
 }

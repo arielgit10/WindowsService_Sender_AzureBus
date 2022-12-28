@@ -9,13 +9,12 @@ namespace WorkerService_Sender.Repository
 
         private DbContextOptions<AppDbContext> GetAllOptions()
         {
-            DbContextOptionsBuilder<AppDbContext> optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
+            DbContextOptionsBuilder<AppDbContext> optionsBuilder = 
+                            new DbContextOptionsBuilder<AppDbContext>();
 
             optionsBuilder.UseSqlServer(AppSettings.ConnectionString);
-
             return optionsBuilder.Options;
         }
-
         public async Task<List<Account>> GetAccounts()
         {
             using (_context = new AppDbContext(GetAllOptions()))
