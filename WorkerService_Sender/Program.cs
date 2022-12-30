@@ -19,7 +19,9 @@ IHost host = Host.CreateDefaultBuilder(args)
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
         optionsBuilder.UseSqlServer(AppSettings.ConnectionString);
         services.AddScoped<AppDbContext>(db => new AppDbContext(optionsBuilder.Options));
+
         services.AddHostedService<Worker>();
+        services.AddSingleton<IServerRepository, ServerRepository>();
     })
     .Build();
 
