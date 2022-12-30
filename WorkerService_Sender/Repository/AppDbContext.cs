@@ -13,6 +13,7 @@ namespace WorkerService_Sender.Repository
         {
         }
         public virtual DbSet<Account> Accounts { get; set; } = null!;
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>(account =>

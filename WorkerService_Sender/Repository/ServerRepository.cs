@@ -15,6 +15,7 @@ namespace WorkerService_Sender.Repository
             optionsBuilder.UseSqlServer(AppSettings.ConnectionString);
             return optionsBuilder.Options;
         }
+
         public async Task<List<Account>> GetAccounts()
         {
             using (_context = new AppDbContext(GetAllOptions()))
@@ -22,10 +23,6 @@ namespace WorkerService_Sender.Repository
                 try
                 {
                     var accounts = await _context.Accounts.ToListAsync();
-
-                    if (accounts == null)
-                        throw new InvalidOperationException("No accounts found it!");
-
                     return accounts;
                 }
                 catch (Exception)

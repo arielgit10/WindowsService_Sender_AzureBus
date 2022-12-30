@@ -14,7 +14,9 @@ IHost host = Host.CreateDefaultBuilder(args)
         IConfiguration configuration = hostContext.Configuration;
         AppSettings.ConnectionString = configuration.GetConnectionString("DefaultConnection");
         AppSettings.QueueConnection = configuration.GetConnectionString("QueueConnection");
-        AppConfiguration.IntervalMinutes = Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["IntervalMinutes"]);
+        
+        AppConfiguration.IntervalMinutes = 
+                Convert.ToInt32(System.Configuration.ConfigurationManager.AppSettings["IntervalMinutes"]);
 
         var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
         optionsBuilder.UseSqlServer(AppSettings.ConnectionString);
@@ -22,9 +24,8 @@ IHost host = Host.CreateDefaultBuilder(args)
 
         services.AddHostedService<Worker>();
         services.AddSingleton<IServerRepository, ServerRepository>();
+        services.AddMemoryCache();
     })
     .Build();
-
-
 
 await host.RunAsync();
